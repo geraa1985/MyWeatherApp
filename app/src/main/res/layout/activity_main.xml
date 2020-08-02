@@ -11,48 +11,45 @@
         android:id="@+id/cityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/bad_script"
         android:text="@string/city"
-        android:textSize="60sp"
+        android:textSize="@dimen/textSize_city"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/temperatureReading"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="@dimen/height_temperature"
         android:fontFamily="@font/bad_script"
         android:text="@string/temperature"
-        android:textSize="60sp"
+        android:textSize="@dimen/textSize_temperature"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cityName" />
 
     <ImageView
         android:id="@+id/weatherImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="@dimen/width_weatherImage"
+        android:layout_height="@dimen/height_weatherImage"
         android:contentDescription="@string/weatherIcon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperatureReading"
+        app:layout_constraintTop_toBottomOf="@+id/cityName"
         app:srcCompat="@drawable/cloud_weather" />
 
     <ImageView
         android:id="@+id/settingsImage"
-        android:layout_width="45dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/width_settingsImage"
+        android:layout_height="@dimen/height_settingsImage"
         android:contentDescription="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.985"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
@@ -60,25 +57,25 @@
 
     <ImageView
         android:id="@+id/optionImage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/width_optionsImage"
+        android:layout_height="@dimen/height_optionsImage"
         android:contentDescription="@string/options"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.985"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@drawable/options" />
 
     <TableLayout
-        android:layout_width="260dp"
-        android:layout_height="280dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="@dimen/width_optionsTable"
+        android:layout_height="@dimen/height_optionsTable"
+        android:layout_marginTop="@dimen/marginTop_optionsTable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/cityName"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureReading">
 
         <TableRow android:id="@+id/rowHumidity">
 
@@ -88,7 +85,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/humidity"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfHumidity"
@@ -97,7 +94,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfHumidity"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
         <TableRow android:id="@+id/rowUVIndex">
@@ -108,7 +105,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/uv_index"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfUVIndex"
@@ -117,7 +114,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfUVIndex"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
         <TableRow android:id="@+id/rowChanceOfRain">
@@ -128,7 +125,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/chance_of_rain"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfChanceOfRain"
@@ -137,7 +134,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfChanceOfRain"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
         <TableRow android:id="@+id/rowPressure">
@@ -148,7 +145,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/pressure"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfPressure"
@@ -157,7 +154,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfPressure"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
         <TableRow android:id="@+id/rowWindSpeed">
@@ -168,7 +165,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/wind_speed"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfWindSpeed"
@@ -177,7 +174,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfWindSpeed"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
         <TableRow android:id="@+id/rowWindDirection">
@@ -188,7 +185,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/wind_direction"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfWindDirection"
@@ -197,7 +194,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfWindDirection"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
         <TableRow android:id="@+id/rowSunrise">
@@ -208,7 +205,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/sunrise"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfSunrise"
@@ -217,7 +214,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfSunrise"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
         <TableRow android:id="@+id/rowSunset">
@@ -228,7 +225,7 @@
                 android:layout_weight="3"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/sunset"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
 
             <TextView
                 android:id="@+id/valueOfSunset"
@@ -237,7 +234,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/valueOfSunset"
-                android:textSize="18sp" />
+                android:textSize="@dimen/textSize_optionsTable" />
         </TableRow>
 
     </TableLayout>
