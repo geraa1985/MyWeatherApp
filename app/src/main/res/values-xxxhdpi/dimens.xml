@@ -36,7 +36,7 @@
     <dimen name="land_marginTop_temperature">100dp</dimen>
     <dimen name="land_marginTop_weatherImage">15dp</dimen>
 
-    <dimen name="land_height_temperature">100dp</dimen>
+    <dimen name="land_height_temperature">110dp</dimen>
     <dimen name="land_width_weatherImage">100dp</dimen>
     <dimen name="land_height_weatherImage">100dp</dimen>
     <dimen name="land_width_optionsTable">260dp</dimen>
