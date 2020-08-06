@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/settingsImage"
-        android:layout_width="45dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/width_settingsImage"
+        android:layout_height="@dimen/height_settingsImage"
         android:contentDescription="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/homeImage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/width_optionsImage"
+        android:layout_height="@dimen/height_optionsImage"
         android:contentDescription="@string/options"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,9 +32,9 @@
         app:srcCompat="@drawable/home" />
 
     <LinearLayout
-        android:layout_width="180dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/land_width_settingsTableCheckBox"
+        android:layout_height="@dimen/land_height_settingsTableCheckBox"
+        android:layout_marginTop="@dimen/land_marginTop_settingsTableCheckBox"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -46,27 +46,27 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/temperature_unit"
-            android:textSize="24sp" />
+            android:textSize="@dimen/textSize_settingsName" />
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="110dp">
+            android:layout_height="@dimen/land_height_settingsGroup">
 
             <RadioButton
                 android:id="@+id/tempValueC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
-                android:text="@string/gradusC"
-                android:textSize="22sp" />
+                android:text="@string/degreesC"
+                android:textSize="@dimen/textSize_settingsValue" />
 
             <RadioButton
                 android:id="@+id/tempValueF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
-                android:text="@string/gradusF"
-                android:textSize="22sp" />
+                android:text="@string/degreesF"
+                android:textSize="@dimen/textSize_settingsValue" />
         </RadioGroup>
 
         <TextView
@@ -74,11 +74,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/wind_speed_units"
-            android:textSize="24sp" />
+            android:textSize="@dimen/textSize_settingsName" />
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="110dp">
+            android:layout_height="@dimen/land_height_settingsGroup">
 
             <RadioButton
                 android:id="@+id/windSpeedValMS"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/ms"
-                android:textSize="22sp" />
+                android:textSize="@dimen/textSize_settingsValue" />
 
             <RadioButton
                 android:id="@+id/windSpeedValKmH"
@@ -94,15 +94,15 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/kmh"
-                android:textSize="22sp" />
+                android:textSize="@dimen/textSize_settingsValue" />
         </RadioGroup>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="180dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/land_width_settingsTableCheckBox"
+        android:layout_height="@dimen/land_height_settingsTableCheckBox"
+        android:layout_marginTop="@dimen/land_marginTop_settingsTableCheckBox"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.7"
@@ -114,11 +114,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/pressure_unit"
-            android:textSize="24sp" />
+            android:textSize="@dimen/textSize_settingsName" />
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="110dp">
+            android:layout_height="@dimen/land_height_settingsGroup">
 
             <RadioButton
                 android:id="@+id/PressureValMm"
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/mm"
-                android:textSize="22sp" />
+                android:textSize="@dimen/textSize_settingsValue" />
 
             <RadioButton
                 android:id="@+id/PressureValGPa"
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/gpa"
-                android:textSize="22sp" />
+                android:textSize="@dimen/textSize_settingsValue" />
         </RadioGroup>
 
         <TextView
@@ -142,11 +142,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/night_day_theme"
-            android:textSize="24sp" />
+            android:textSize="@dimen/textSize_settingsName" />
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="110dp">
+            android:layout_height="@dimen/land_height_settingsGroup">
 
             <RadioButton
                 android:id="@+id/nightTheme"
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/night_theme"
-                android:textSize="22sp" />
+                android:textSize="@dimen/textSize_settingsValue" />
 
             <RadioButton
                 android:id="@+id/dayTheme"
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
                 android:text="@string/day_theme"
-                android:textSize="22sp" />
+                android:textSize="@dimen/textSize_settingsValue" />
         </RadioGroup>
 
     </LinearLayout>

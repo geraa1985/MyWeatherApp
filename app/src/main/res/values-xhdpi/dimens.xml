@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="textSize_city">40sp</dimen>
+    <dimen name="textSize_temperature">40sp</dimen>
+    <dimen name="textSize_optionsTable">16sp</dimen>
+    <dimen name="textSize_enterCity">26sp</dimen>
+    <dimen name="textSize_optionsCheckBox">20sp</dimen>
+    <dimen name="textSize_settingsName">18sp</dimen>
+    <dimen name="textSize_settingsValue">14sp</dimen>
+
+    <dimen name="height_temperature">82dp</dimen>
+    <dimen name="width_weatherImage">82dp</dimen>
+    <dimen name="height_weatherImage">82dp</dimen>
+    <dimen name="width_optionsImage">30dp</dimen>
+    <dimen name="height_optionsImage">30dp</dimen>
+    <dimen name="width_settingsImage">35dp</dimen>
+    <dimen name="height_settingsImage">30dp</dimen>
+    <dimen name="width_enterCity">220dp</dimen>
+    <dimen name="height_enterCity">60dp</dimen>
+    <dimen name="width_optionsTableCheckBox">230dp</dimen>
+    <dimen name="height_optionsTableCheckBox">320dp</dimen>
+    <dimen name="width_optionsTable">240dp</dimen>
+    <dimen name="height_optionsTable">260dp</dimen>
+    <dimen name="width_settingsTableCheckBox">240dp</dimen>
+    <dimen name="height_settingsTableCheckBox">400dp</dimen>
+    <dimen name="height_settingsGroup">65dp</dimen>
+
+    <dimen name="marginTop_enterCity">36dp</dimen>
+    <dimen name="marginTop_optionsTable">10dp</dimen>
+    <dimen name="marginTop_optionsTableCheckBox">5dp</dimen>
+    <dimen name="marginTop_settingsTableCheckBox">30dp</dimen>
+
+
+    <dimen name="land_marginTop_city">10dp</dimen>
+    <dimen name="land_marginTop_temperature">70dp</dimen>
+    <dimen name="land_marginTop_weatherImage">0dp</dimen>
+
+    <dimen name="land_height_temperature">80dp</dimen>
+    <dimen name="land_width_weatherImage">82dp</dimen>
+    <dimen name="land_height_weatherImage">82dp</dimen>
+    <dimen name="land_width_optionsTable">200dp</dimen>
+    <dimen name="land_height_optionsTable">220dp</dimen>
+    <dimen name="land_width_optionsTableCheckBox">150dp</dimen>
+    <dimen name="land_height_optionsTableCheckBox">160dp</dimen>
+    <dimen name="land_width_settingsTableCheckBox">180dp</dimen>
+    <dimen name="land_height_settingsTableCheckBox">220dp</dimen>
+    <dimen name="land_height_settingsGroup">80dp</dimen>
+
+    <dimen name="land_textSize_optionsTable">14sp</dimen>
+
+    <dimen name="land_marginTop_settingsTableCheckBox">10dp</dimen>
+
+
+</resources>
