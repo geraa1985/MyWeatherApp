@@ -26,7 +26,7 @@
     <dimen name="height_settingsTableCheckBox">550dp</dimen>
     <dimen name="height_settingsGroup">90dp</dimen>
 
-    <dimen name="marginTop_enterCity">36dp</dimen>
+    <dimen name="marginTop_enterCity">15dp</dimen>
     <dimen name="marginTop_optionsTable">10dp</dimen>
     <dimen name="marginTop_optionsTableCheckBox">5dp</dimen>
     <dimen name="marginTop_settingsTableCheckBox">30dp</dimen>

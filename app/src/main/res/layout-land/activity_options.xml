@@ -6,7 +6,7 @@
     android:background="@drawable/background">
 
     <EditText
-        android:id="@+id/inputCity"
+        android:id="@+id/enterCity"
         android:layout_width="@dimen/width_enterCity"
         android:layout_height="@dimen/height_enterCity"
         android:autofillHints="@string/city"
@@ -27,13 +27,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCity">
+        app:layout_constraintTop_toBottomOf="@+id/enterCity">
 
         <CheckBox
             android:id="@+id/checkBoxHumidity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/humidity"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
@@ -42,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/uv_index"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
@@ -50,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/chance_of_rain"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
@@ -58,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/pressure"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
@@ -70,13 +74,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCity">
+        app:layout_constraintTop_toBottomOf="@+id/enterCity">
 
         <CheckBox
             android:id="@+id/checkBoxWindSpeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/wind_speed"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
@@ -85,6 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/wind_direction"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
@@ -93,6 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/sunrise"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
@@ -101,22 +108,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
+            android:checked="true"
             android:text="@string/sunset"
             android:textSize="@dimen/textSize_optionsCheckBox" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/settingsImage"
-        android:layout_width="@dimen/width_settingsImage"
-        android:layout_height="@dimen/height_settingsImage"
-        android:contentDescription="@string/settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        app:srcCompat="@drawable/settings" />
 
     <ImageView
         android:id="@+id/homeImage"

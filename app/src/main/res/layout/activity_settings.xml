@@ -6,19 +6,6 @@
     android:background="@drawable/background">
 
     <ImageView
-        android:id="@+id/settingsImage"
-        android:layout_width="@dimen/width_settingsImage"
-        android:layout_height="@dimen/height_settingsImage"
-        android:contentDescription="@string/settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        app:srcCompat="@drawable/settings" />
-
-    <ImageView
         android:id="@+id/homeImage"
         android:layout_width="@dimen/width_optionsImage"
         android:layout_height="@dimen/height_optionsImage"
@@ -109,7 +96,7 @@
             android:layout_height="@dimen/height_settingsGroup">
 
             <RadioButton
-                android:id="@+id/PressureValMm"
+                android:id="@+id/pressureValMm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
@@ -117,7 +104,7 @@
                 android:textSize="@dimen/textSize_settingsValue" />
 
             <RadioButton
-                android:id="@+id/PressureValGPa"
+                android:id="@+id/pressureValGPa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bad_script"
