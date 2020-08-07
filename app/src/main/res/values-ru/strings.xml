@@ -16,14 +16,14 @@
     <string name="valueOfWindSpeed">3 м/с</string>
     <string name="valueOfWindDirection">ЮЗ</string>
     <string name="inputCityHint">введите название города</string>
-    <string name="temperature_unit">Единицы измерения температуры:</string>
-    <string name="wind_speed_units">Единицы измерения скорости ветра:</string>
+    <string name="temperature_unit">Температура в:</string>
+    <string name="wind_speed_units">Скорость ветра в:</string>
     <string name="ms">м/с</string>
     <string name="kmh">км/ч</string>
-    <string name="pressure_unit">Единицы измерения давления:</string>
+    <string name="pressure_unit">Дваление в:</string>
     <string name="mm">мм</string>
     <string name="gpa">гПа</string>
-    <string name="night_day_theme">Ночная/дневная тема оформления:</string>
+    <string name="night_day_theme">Ночная/дневная тема:</string>
     <string name="night_theme">Ночная тема</string>
     <string name="day_theme">Дневная тема</string>
 

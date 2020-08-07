@@ -68,6 +68,32 @@
         app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@drawable/options" />
 
+    <ImageView
+        android:id="@+id/detailsImage"
+        android:layout_width="@dimen/width_optionsImage"
+        android:layout_height="@dimen/height_optionsImage"
+        android:contentDescription="@string/options"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        app:srcCompat="@drawable/details" />
+
+    <ImageView
+        android:id="@+id/infoImage"
+        android:layout_width="@dimen/width_optionsImage"
+        android:layout_height="@dimen/height_optionsImage"
+        android:contentDescription="@string/options"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@drawable/info" />
+
     <TableLayout
         android:layout_width="@dimen/width_optionsTable"
         android:layout_height="@dimen/height_optionsTable"
