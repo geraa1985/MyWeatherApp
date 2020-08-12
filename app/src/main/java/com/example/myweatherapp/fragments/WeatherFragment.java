@@ -14,8 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.myweatherapp.R;
-import com.example.myweatherapp.SettingsActivity;
-import com.example.myweatherapp.WeatherActivity;
+import com.example.myweatherapp.activities.SettingsActivity;
+import com.example.myweatherapp.activities.WeatherActivity;
 
 import java.util.Objects;
 

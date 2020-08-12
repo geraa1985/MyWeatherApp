@@ -1,4 +1,4 @@
-package com.example.myweatherapp;
+package com.example.myweatherapp.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myweatherapp.R;
 
 public class WeatherActivity extends AppCompatActivity {
     private ImageView optionImage;

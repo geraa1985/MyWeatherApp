@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cities">
+        <item>Moscow</item>
+        <item>St.-Peterburg</item>
+        <item>Rostov</item>
+        <item>Krasnodar</item>
+        <item>Taganrog</item>
+        <item>Novgorod</item>
+        <item>Tver</item>
+        <item>Perm</item>
+        <item>Irkutsk</item>
+        <item>Sochi</item>
+    </string-array>
+
+    <string-array name="temperature">
+        <item>+32°C</item>
+        <item>+27°C</item>
+        <item>+18°C</item>
+        <item>+12°C</item>
+        <item>+4°C</item>
+        <item>0°C</item>
+        <item>-3°C</item>
+        <item>-12°C</item>
+        <item>-21°C</item>
+        <item>-27°C</item>
+    </string-array>
+
+    <integer-array name="weatherImage">
+        <item>@drawable/sun</item>
+        <item>@drawable/rain</item>
+        <item>@drawable/clouds</item>
+        <item>@drawable/flash_cloud_rain</item>
+        <item>@drawable/cloud_weather</item>
+    </integer-array>
+
+    <string-array name="humidity">
+        <item>58%</item>
+        <item>46%</item>
+        <item>33%</item>
+        <item>17%</item>
+        <item>75%</item>
+        <item>62%</item>
+        <item>90%</item>
+        <item>49%</item>
+        <item>53%</item>
+        <item>21%</item>
+    </string-array>
+
+    <string-array name="uvIndex">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="chanceOfRain">
+        <item>58%</item>
+        <item>46%</item>
+        <item>33%</item>
+        <item>17%</item>
+        <item>75%</item>
+        <item>62%</item>
+        <item>90%</item>
+        <item>49%</item>
+        <item>53%</item>
+        <item>21%</item>
+    </string-array>
+
+    <string-array name="pressure">
+        <item>722 mm</item>
+        <item>725 mm</item>
+        <item>733 mm</item>
+        <item>739 mm</item>
+        <item>744 mm</item>
+        <item>748 mm</item>
+        <item>751 mm</item>
+        <item>759 mm</item>
+        <item>760 mm</item>
+        <item>763 mm</item>
+    </string-array>
+
+    <string-array name="windSpeed">
+        <item>1 m/s</item>
+        <item>3 m/s</item>
+        <item>5 m/s</item>
+        <item>7 m/s</item>
+        <item>11 m/s</item>
+        <item>13 m/s</item>
+        <item>17 m/s</item>
+        <item>19 m/s</item>
+        <item>22 m/s</item>
+        <item>25 m/s</item>
+    </string-array>
+
+    <string-array name="windDirection">
+        <item>S</item>
+        <item>SW</item>
+        <item>SE</item>
+        <item>N</item>
+        <item>NW</item>
+        <item>NE</item>
+        <item>W</item>
+        <item>E</item>
+    </string-array>
+
+    <string-array name="sunrise">
+        <item>4:21</item>
+        <item>5:32</item>
+        <item>6:27</item>
+        <item>7:44</item>
+    </string-array>
+
+    <string-array name="sunset">
+        <item>20:44</item>
+        <item>19:32</item>
+        <item>18:27</item>
+        <item>17:44</item>
+    </string-array>
+
+</resources>

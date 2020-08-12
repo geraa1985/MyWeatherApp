@@ -1,4 +1,4 @@
-package com.example.myweatherapp;
+package com.example.myweatherapp.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myweatherapp.R;
 
 import java.util.Objects;
 
