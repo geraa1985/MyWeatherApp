@@ -10,19 +10,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
 
-import java.util.Objects;
-
 public class SettingsActivity extends AppCompatActivity {
     private ImageView saveImage;
 
-    RadioButton tempValueC;
-    RadioButton tempValueF;
-    RadioButton windSpeedValMS;
-    RadioButton windSpeedValKmH;
-    RadioButton pressureValMm;
-    RadioButton pressureValGPa;
-    RadioButton nightTheme;
-    RadioButton dayTheme;
+    private RadioButton tempValueC;
+    private RadioButton tempValueF;
+    private RadioButton windSpeedValMS;
+    private RadioButton windSpeedValKmH;
+    private RadioButton pressureValMm;
+    private RadioButton pressureValGPa;
+    private RadioButton nightTheme;
+    private RadioButton dayTheme;
+
+    public static String tempValueCKey = "tempValueCKey";
+    public static String tempValueFKey = "tempValueFKey";
+    public static String windSpeedValMSKey = "windSpeedValMSKey";
+    public static String windSpeedValKmHKey = "windSpeedValKmHKey";
+    public static String pressureValMmKey = "pressureValMmKey";
+    public static String pressureValGPaKey = "pressureValGPaKey";
+    public static String nightThemeKey = "nightThemeKey";
+    public static String dayThemeKey = "dayThemeKey";
 
     private Bundle settings = new Bundle();
     private Bundle options = new Bundle();
@@ -61,7 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setOnClickBehaviourToSave() {
         saveImage.setOnClickListener((v) -> {
-            checkAllSettings();
+            checkedAllRadioButtons();
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 Intent intent = new Intent(this, WeatherActivity.class);
                 intent.putExtra(WeatherActivity.settingsDataKey, settings);
@@ -79,105 +86,32 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setSettingsFromMainDisplay() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            tempValueC.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.temperatureKey)).contains(getString(R.string.degreesC)));
-            tempValueF.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.temperatureKey)).contains(getString(R.string.degreesF)));
+
+        tempValueC.setChecked(settings.getBoolean(tempValueCKey));
+        tempValueF.setChecked(settings.getBoolean(tempValueFKey));
+        pressureValMm.setChecked(settings.getBoolean(pressureValMmKey));
+        pressureValGPa.setChecked(settings.getBoolean(pressureValGPaKey));
+        windSpeedValMS.setChecked(settings.getBoolean(windSpeedValMSKey));
+        windSpeedValKmH.setChecked(settings.getBoolean(windSpeedValKmHKey));
+
+    }
+
+    private void checkedAllRadioButtons() {
+        fillSettings(tempValueC, tempValueCKey);
+        fillSettings(tempValueF, tempValueFKey);
+        fillSettings(pressureValMm, pressureValMmKey);
+        fillSettings(pressureValGPa, pressureValGPaKey);
+        fillSettings(windSpeedValMS, windSpeedValMSKey);
+        fillSettings(windSpeedValKmH, windSpeedValKmHKey);
+        fillSettings(nightTheme, nightThemeKey);
+        fillSettings(dayTheme, dayThemeKey);
+    }
+
+    private void fillSettings(RadioButton radioButton, String key) {
+        if (radioButton.isChecked()) {
+            settings.putBoolean(key, true);
         } else {
-            tempValueC.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.temperatureKey)).contains(getString(R.string.degreesC)));
-            tempValueF.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.temperatureKey)).contains(getString(R.string.degreesF)));
-            if(settings.getString(WeatherActivity.pressureKey) != null && settings.getString(WeatherActivity.windSpeedKey) != null) {
-                pressureValMm.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.pressureKey)).contains(getString(R.string.mm)));
-                pressureValGPa.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.pressureKey)).contains(getString(R.string.gpa)));
-                windSpeedValMS.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.windSpeedKey)).contains(getString(R.string.ms)));
-                windSpeedValKmH.setChecked(Objects.requireNonNull(settings.getString(WeatherActivity.windSpeedKey)).contains(getString(R.string.kmh)));
-            }
+            settings.putBoolean(key, false);
         }
-    }
-
-    private void checkAllSettings() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            onCheckedRadioButton(tempValueC, WeatherActivity.temperatureKey, getString(R.string.degreesC));
-            onCheckedRadioButton(tempValueF, WeatherActivity.temperatureKey, getString(R.string.degreesF));
-        } else {
-            onCheckedRadioButton(tempValueC, WeatherActivity.temperatureKey, getString(R.string.degreesC));
-            onCheckedRadioButton(tempValueF, WeatherActivity.temperatureKey, getString(R.string.degreesF));
-            onCheckedRadioButton(pressureValMm, WeatherActivity.pressureKey, getString(R.string.mm));
-            onCheckedRadioButton(pressureValGPa, WeatherActivity.pressureKey, getString(R.string.gpa));
-            onCheckedRadioButton(windSpeedValMS, WeatherActivity.windSpeedKey, getString(R.string.ms));
-            onCheckedRadioButton(windSpeedValKmH, WeatherActivity.windSpeedKey, getString(R.string.kmh));
-        }
-    }
-
-    private void onCheckedRadioButton(RadioButton radioButton, String key, String units) {
-        String value = settings.getString(key);
-        boolean isUnits = Objects.requireNonNull(value).contains(units);
-
-        if (radioButton.isChecked() && !isUnits) {
-            int newDigitValue;
-            if (radioButton.getId() == R.id.tempValueC) {
-                newDigitValue = fToC(digitalValue(value));
-            } else if (radioButton.getId() == R.id.tempValueF) {
-                newDigitValue = cToF(digitalValue(value));
-            } else if (radioButton.getId() == R.id.pressureValMm) {
-                newDigitValue = gPaToMm(digitalValue(value));
-            } else if (radioButton.getId() == R.id.pressureValGPa) {
-                newDigitValue = mmToGPa(digitalValue(value));
-            } else if (radioButton.getId() == R.id.windSpeedValMS) {
-                newDigitValue = kmhToMs(digitalValue(value));
-            } else if (radioButton.getId() == R.id.windSpeedValKmH) {
-                newDigitValue = msToKmh(digitalValue(value));
-            } else {
-                newDigitValue = 0;
-            }
-            settings.putString(key, newValue(value, newDigitValue, units));
-        }
-    }
-
-    private int digitalValue(String value) {
-        StringBuilder sb = new StringBuilder(value);
-        StringBuilder digitalValue = new StringBuilder();
-        for (int i = 0; i < sb.length(); i++) {
-            if (Character.isDigit(sb.charAt(i))) {
-                digitalValue.append(sb.charAt(i));
-            }
-        }
-        return Integer.parseInt(digitalValue.toString());
-    }
-
-    private String newValue(String value, int newDigitValue, String units) {
-        StringBuilder sb = new StringBuilder(value);
-        StringBuilder newValue = new StringBuilder();
-
-        if (!Character.isDigit(sb.charAt(0))) {
-            newValue.append(sb.charAt(0)).append(newDigitValue).append(units);
-        } else {
-            newValue.append(newDigitValue).append(" ").append(units);
-        }
-
-        return newValue.toString();
-    }
-
-    private int cToF(int valC) {
-        return (int) Math.round(valC * 1.8 + 32);
-    }
-
-    private int fToC(int valF) {
-        return (int) Math.round((valF - 32) / 1.8);
-    }
-
-    private int mmToGPa(int valMm) {
-        return (int) Math.round(valMm * 1.333);
-    }
-
-    private int gPaToMm(int valGPa) {
-        return (int) Math.round(valGPa * 0.75);
-    }
-
-    private int msToKmh(int valMs) {
-        return (int) Math.round(valMs * 3.6);
-    }
-
-    private int kmhToMs(int valKmh) {
-        return (int) Math.round(valKmh / 3.6);
     }
 }

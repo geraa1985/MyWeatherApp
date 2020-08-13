@@ -1,5 +1,6 @@
 package com.example.myweatherapp.inputdata;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.example.myweatherapp.R;
@@ -23,12 +24,13 @@ public class City {
 
     Random rand = new Random();
 
+    @SuppressLint("Recycle")
     public City(String name, Context context) {
         this.name = name;
         this.context = context;
 
         this.temperature = context.getResources().getStringArray(R.array.temperature)[rand.nextInt(context.getResources().getStringArray(R.array.temperature).length)];
-        this.weatherImage = context.getResources().getIntArray(R.array.weatherImage)[rand.nextInt(context.getResources().getStringArray(R.array.weatherImage).length)];
+        this.weatherImage = context.getResources().obtainTypedArray(R.array.weatherImage).getResourceId(rand.nextInt(context.getResources().obtainTypedArray(R.array.weatherImage).length()),-1);
         this.humidity = context.getResources().getStringArray(R.array.humidity)[rand.nextInt(context.getResources().getStringArray(R.array.humidity).length)];
         this.uvIndex = context.getResources().getStringArray(R.array.uvIndex)[rand.nextInt(context.getResources().getStringArray(R.array.uvIndex).length)];
         this.chanceOfRain = context.getResources().getStringArray(R.array.chanceOfRain)[rand.nextInt(context.getResources().getStringArray(R.array.chanceOfRain).length)];
