@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:ignore="MissingDefaultResource">
 
     <TextView
@@ -40,14 +39,14 @@
         android:id="@+id/weatherImage"
         android:layout_width="@dimen/land_width_weatherImage"
         android:layout_height="@dimen/land_height_weatherImage"
+        android:scaleType="fitXY"
         android:contentDescription="@string/weatherIcon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915"
-        app:srcCompat="@drawable/cloud_weather" />
+        app:layout_constraintVertical_bias="0.915" />
 
     <ImageView
         android:id="@+id/settingsImage"
@@ -60,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
-        app:srcCompat="@drawable/settings" />
+        android:src="?attr/settingsImage" />
 
     <ImageView
         android:id="@+id/detailsImage"
@@ -73,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55"
-        app:srcCompat="@drawable/details" />
+        android:src="?attr/yandexImage" />
 
     <ImageView
         android:id="@+id/infoImage"
@@ -86,6 +85,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/info" />
+        android:src="?attr/wikiImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

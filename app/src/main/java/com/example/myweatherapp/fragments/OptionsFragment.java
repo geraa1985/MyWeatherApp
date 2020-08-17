@@ -1,5 +1,6 @@
 package com.example.myweatherapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -22,8 +23,6 @@ import com.example.myweatherapp.adapters.CitiesListRVAdapter;
 import com.example.myweatherapp.inputdata.City;
 import com.example.myweatherapp.interfaces.IRVonCityClick;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 public class OptionsFragment extends Fragment implements IRVonCityClick {
@@ -34,7 +33,6 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
 
     RecyclerView cityRV;
     CitiesListRVAdapter adapter;
-    private List<City> citiesList = new LinkedList<>();
     private String[] cities;
 
     private Bundle options = new Bundle();
@@ -53,7 +51,9 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
     public void onStart() {
         super.onStart();
         findViews();
-        getInputData(cities);
+        if (City.getCitiesList().size() == 0) {
+            getInputData(cities);
+        }
         setInfoFromBundle();
         setupAdapter();
     }
@@ -80,16 +80,18 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
         LinearLayoutManager lm = new LinearLayoutManager(getContext());
         lm.setOrientation(RecyclerView.VERTICAL);
         cityRV.setLayoutManager(lm);
-        adapter = new CitiesListRVAdapter(citiesList, this);
+        adapter = new CitiesListRVAdapter(City.getCitiesList(), this);
         cityRV.setAdapter(adapter);
     }
 
+
     private void getInputData(String[] cities) {
         for (String city : cities) {
-            citiesList.add(new City(city, Objects.requireNonNull(getContext())));
+            City.getCitiesList().add(new City(city, Objects.requireNonNull(getContext())));
         }
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onCityClick(City city) {
         options.putString(WeatherActivity.cityKey, city.getName());
@@ -113,8 +115,8 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
             Intent intent = new Intent(Objects.requireNonNull(getActivity()), WeatherActivity.class);
             intent.putExtra(WeatherActivity.optionsDataKey, options);
             intent.putExtra(WeatherActivity.settingsDataKey, settings);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
+            getActivity().finish();
         }
     }
 

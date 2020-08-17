@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="customAttrs">
+        <attr name="saveImage" format="reference"/>
+        <attr name="listImage" format="reference"/>
+        <attr name="yandexImage" format="reference"/>
+        <attr name="wikiImage" format="reference"/>
+        <attr name="optionsImage" format="reference"/>
+        <attr name="settingsImage" format="reference"/>
+    </declare-styleable>
+</resources>

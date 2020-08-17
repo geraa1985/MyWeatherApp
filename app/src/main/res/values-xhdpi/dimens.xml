@@ -42,12 +42,12 @@
     <dimen name="land_width_optionsTableCheckBox">150dp</dimen>
     <dimen name="land_height_optionsTableCheckBox">160dp</dimen>
     <dimen name="land_width_settingsTableCheckBox">180dp</dimen>
-    <dimen name="land_height_settingsTableCheckBox">220dp</dimen>
+    <dimen name="land_height_settingsTableCheckBox">230dp</dimen>
     <dimen name="land_height_settingsGroup">80dp</dimen>
 
     <dimen name="land_textSize_optionsTable">14sp</dimen>
 
-    <dimen name="land_marginTop_settingsTableCheckBox">10dp</dimen>
+    <dimen name="land_marginTop_settingsTableCheckBox">5dp</dimen>
 
 
 </resources>

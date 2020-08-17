@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.example.myweatherapp.R;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class City {
@@ -20,6 +22,12 @@ public class City {
     private String sunrise;
     private String sunset;
 
+    public static List<City> getCitiesList() {
+        return citiesList;
+    }
+
+    private static List<City> citiesList = new LinkedList<>();
+
     Context context;
 
     Random rand = new Random();
@@ -30,7 +38,7 @@ public class City {
         this.context = context;
 
         this.temperature = context.getResources().getStringArray(R.array.temperature)[rand.nextInt(context.getResources().getStringArray(R.array.temperature).length)];
-        this.weatherImage = context.getResources().obtainTypedArray(R.array.weatherImage).getResourceId(rand.nextInt(context.getResources().obtainTypedArray(R.array.weatherImage).length()),-1);
+        this.weatherImage = context.getResources().obtainTypedArray(R.array.weatherImage).getResourceId(rand.nextInt(context.getResources().obtainTypedArray(R.array.weatherImage).length()),0);
         this.humidity = context.getResources().getStringArray(R.array.humidity)[rand.nextInt(context.getResources().getStringArray(R.array.humidity).length)];
         this.uvIndex = context.getResources().getStringArray(R.array.uvIndex)[rand.nextInt(context.getResources().getStringArray(R.array.uvIndex).length)];
         this.chanceOfRain = context.getResources().getStringArray(R.array.chanceOfRain)[rand.nextInt(context.getResources().getStringArray(R.array.chanceOfRain).length)];

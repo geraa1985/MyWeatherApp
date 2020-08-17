@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
 
+import java.util.Objects;
+
 public class WeatherActivity extends AppCompatActivity {
     private ImageView optionImage;
     private ImageView settingsImage;
@@ -64,6 +66,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkTheme();
         setContentView(R.layout.activity_weather);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -74,6 +77,7 @@ public class WeatherActivity extends AppCompatActivity {
             intent.putExtra(optionsDataKey, options);
             intent.putExtra(settingsDataKey, settings);
             startActivity(intent);
+            finish();
         }
 
         findViews();
@@ -83,6 +87,7 @@ public class WeatherActivity extends AppCompatActivity {
         setOnClickToWikiIcon();
         setOnClickToYandexIcon();
         setCityFromOptions();
+        getInfo();
         getAllOptionsFromDisplay();
         getSettingsFromMainDisplay();
     }
@@ -104,37 +109,13 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        setIntent(intent);
-        getInfo();
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Intent intent2 = new Intent(this, MainActivity.class);
-            intent2.putExtra(optionsDataKey, options);
-            intent2.putExtra(settingsDataKey, settings);
-            startActivity(intent2);
-        }
-    }
-
-    @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(optionsDataKey, options);
         intent.putExtra(settingsDataKey, settings);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
-    }
-
-    private void getInfo() {
-        if (getIntent().getBundleExtra(optionsDataKey) != null) {
-            options = getIntent().getBundleExtra(optionsDataKey);
-            setAllOptionsFromOptions();
-        }
-        if (getIntent().getBundleExtra(settingsDataKey) != null) {
-            settings = getIntent().getBundleExtra(settingsDataKey);
-            setAllSettings();
-        }
+        finish();
     }
 
     private void findViews() {
@@ -168,6 +149,17 @@ public class WeatherActivity extends AppCompatActivity {
         options = getIntent().getBundleExtra(optionsDataKey);
     }
 
+    private void getInfo() {
+        if (getIntent().getBundleExtra(optionsDataKey) != null) {
+            options = getIntent().getBundleExtra(optionsDataKey);
+            setAllOptionsFromOptions();
+        }
+        if (getIntent().getBundleExtra(settingsDataKey) != null) {
+            settings = getIntent().getBundleExtra(settingsDataKey);
+            setAllSettings();
+        }
+    }
+
     private void setOnClickToListIcon() {
         listCitiesImage.setOnClickListener((v) -> {
             getSettingsFromMainDisplay();
@@ -175,8 +167,8 @@ public class WeatherActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(optionsDataKey, options);
             intent.putExtra(settingsDataKey, settings);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
+            finish();
         });
     }
 
@@ -205,8 +197,8 @@ public class WeatherActivity extends AppCompatActivity {
             Intent intent = new Intent(this, OptionsActivity.class);
             intent.putExtra(optionsDataKey, options);
             intent.putExtra(settingsDataKey, settings);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
+            finish();
         });
     }
 
@@ -217,13 +209,12 @@ public class WeatherActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra(settingsDataKey, settings);
             intent.putExtra(optionsDataKey, options);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
+            finish();
         });
     }
 
     private void setAllOptionsFromOptions() {
-        setCityFromOptions();
         setVisibilityFromOptions(rowHumidity);
         setVisibilityFromOptions(rowUVIndex);
         setVisibilityFromOptions(rowChanceOfRain);
@@ -251,7 +242,7 @@ public class WeatherActivity extends AppCompatActivity {
     private void setVisibilityFromOptions(TableRow row) {
         TextView option = (TextView) row.getChildAt(0);
         String optionKey = option.getText().toString();
-        if (!options.getBoolean(optionKey)) {
+        if (!options.getBoolean(optionKey) && options.containsKey(optionKey)) {
             row.setVisibility(View.GONE);
         } else {
             row.setVisibility(View.VISIBLE);
@@ -376,5 +367,16 @@ public class WeatherActivity extends AppCompatActivity {
 
     private int kmhToMs(int valKmh) {
         return (int) Math.round(valKmh / 3.6);
+    }
+
+
+    private void checkTheme() {
+        if (getIntent().getBundleExtra(settingsDataKey) != null) {
+            if (Objects.requireNonNull(getIntent().getBundleExtra(settingsDataKey)).getBoolean(SettingsActivity.nightThemeKey)) {
+                setTheme(R.style.AppThemeDark);
+            } else {
+                setTheme(R.style.AppTheme);
+            }
+        }
     }
 }
