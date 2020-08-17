@@ -33,7 +33,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/temperature_unit"
-            android:textSize="@dimen/textSize_settingsName" />
+            android:textSize="@dimen/textSize_settingsName"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -61,7 +62,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/wind_speed_units"
-            android:textSize="@dimen/textSize_settingsName" />
+            android:textSize="@dimen/textSize_settingsName"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -89,7 +91,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/pressure_unit"
-            android:textSize="@dimen/textSize_settingsName" />
+            android:textSize="@dimen/textSize_settingsName"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -117,7 +120,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bad_script"
             android:text="@string/night_day_theme"
-            android:textSize="@dimen/textSize_settingsName" />
+            android:textSize="@dimen/textSize_settingsName"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:layout_width="match_parent"

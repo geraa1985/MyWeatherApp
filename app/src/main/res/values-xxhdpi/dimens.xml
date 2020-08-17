@@ -12,10 +12,8 @@
     <dimen name="height_temperature">128dp</dimen>
     <dimen name="width_weatherImage">128dp</dimen>
     <dimen name="height_weatherImage">128dp</dimen>
-    <dimen name="width_optionsImage">40dp</dimen>
-    <dimen name="height_optionsImage">40dp</dimen>
-    <dimen name="width_settingsImage">45dp</dimen>
-    <dimen name="height_settingsImage">40dp</dimen>
+    <dimen name="width_optionsImage">45dp</dimen>
+    <dimen name="height_optionsImage">45dp</dimen>
     <dimen name="width_enterCity">300dp</dimen>
     <dimen name="height_enterCity">100dp</dimen>
     <dimen name="width_optionsTableCheckBox">300dp</dimen>

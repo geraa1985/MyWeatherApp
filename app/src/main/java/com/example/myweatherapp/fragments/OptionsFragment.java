@@ -6,35 +6,42 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myweatherapp.R;
-import com.example.myweatherapp.WeatherActivity;
+import com.example.myweatherapp.activities.SettingsActivity;
+import com.example.myweatherapp.activities.WeatherActivity;
+import com.example.myweatherapp.adapters.CitiesListRVAdapter;
+import com.example.myweatherapp.inputdata.City;
+import com.example.myweatherapp.interfaces.IRVonCityClick;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
-public class OptionsFragment extends Fragment {
-    private ImageView saveImage;
+public class OptionsFragment extends Fragment implements IRVonCityClick {
 
-    private EditText enterCity;
+    TextView cityName;
+    TextView temperature;
+    ImageView weatherImage;
 
-    private CheckBox humidity;
-    private CheckBox uvIndex;
-    private CheckBox chanceOfRain;
-    private CheckBox pressure;
-    private CheckBox windSpeed;
-    private CheckBox windDirect;
-    private CheckBox sunrise;
-    private CheckBox sunset;
+    RecyclerView cityRV;
+    CitiesListRVAdapter adapter;
+    private List<City> citiesList = new LinkedList<>();
+    private String[] cities;
 
     private Bundle options = new Bundle();
+    private Bundle settings = new Bundle();
+
+    public OptionsFragment() {
+    }
 
     @Nullable
     @Override
@@ -46,61 +53,122 @@ public class OptionsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         findViews();
-        setOnClickBehaviourToSave();
+        getInputData(cities);
+        setInfoFromBundle();
+        setupAdapter();
     }
 
     private void findViews() {
-        saveImage = Objects.requireNonNull(getActivity()).findViewById(R.id.homeImage);
-        enterCity = Objects.requireNonNull(getActivity()).findViewById(R.id.enterCity);
-        humidity = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxHumidity);
-        uvIndex = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxUVIndex);
-        chanceOfRain = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxChanceOfRain);
-        pressure = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxPressure);
-        windSpeed = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxWindSpeed);
-        windDirect = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxWindDirection);
-        sunrise = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxSunrise);
-        sunset = Objects.requireNonNull(getActivity()).findViewById(R.id.checkBoxSunset);
+        cityName = Objects.requireNonNull(getActivity()).findViewById(R.id.cityName);
+        temperature = Objects.requireNonNull(getActivity()).findViewById(R.id.temperatureReading);
+        weatherImage = Objects.requireNonNull(getActivity()).findViewById(R.id.weatherImage);
+
+        cities = getResources().getStringArray(R.array.cities);
+        cityRV = Objects.requireNonNull(getActivity()).findViewById(R.id.cities_rv);
     }
 
-    private void setOnClickBehaviourToSave() {
-        saveImage.setOnClickListener((v) -> {
-            enteredCity();
-            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                checkAllOfOptions();
-                Intent intent = new Intent(Objects.requireNonNull(getActivity()), WeatherActivity.class);
-                intent.putExtra(WeatherActivity.optionsDataKey, options);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                getActivity().finish();
-            } else {
-                TextView city = Objects.requireNonNull(getActivity()).findViewById(R.id.cityName);
-                city.setText(options.getString(WeatherActivity.cityKey));
-            }
-        });
-    }
-
-    private void checkAllOfOptions() {
-        checkToCheckboxClicked(humidity);
-        checkToCheckboxClicked(uvIndex);
-        checkToCheckboxClicked(chanceOfRain);
-        checkToCheckboxClicked(pressure);
-        checkToCheckboxClicked(windSpeed);
-        checkToCheckboxClicked(windDirect);
-        checkToCheckboxClicked(sunrise);
-        checkToCheckboxClicked(sunset);
-    }
-
-    private void enteredCity() {
-        if (!enterCity.getText().toString().equals("")) {
-            options.putString(WeatherActivity.cityKey, enterCity.getText().toString());
+    private void setInfoFromBundle() {
+        if (Objects.requireNonNull(getActivity()).getIntent().getBundleExtra(WeatherActivity.optionsDataKey) != null) {
+            options = Objects.requireNonNull(getActivity()).getIntent().getBundleExtra(WeatherActivity.optionsDataKey);
+        }
+        if (Objects.requireNonNull(getActivity()).getIntent().getBundleExtra(WeatherActivity.settingsDataKey) != null) {
+            settings = Objects.requireNonNull(getActivity()).getIntent().getBundleExtra(WeatherActivity.settingsDataKey);
         }
     }
 
-    private void checkToCheckboxClicked(CheckBox box) {
-        if (box.isChecked()) {
-            options.putBoolean(box.getText().toString(), true);
+    private void setupAdapter() {
+        LinearLayoutManager lm = new LinearLayoutManager(getContext());
+        lm.setOrientation(RecyclerView.VERTICAL);
+        cityRV.setLayoutManager(lm);
+        adapter = new CitiesListRVAdapter(citiesList, this);
+        cityRV.setAdapter(adapter);
+    }
+
+    private void getInputData(String[] cities) {
+        for (String city : cities) {
+            citiesList.add(new City(city, Objects.requireNonNull(getContext())));
+        }
+    }
+
+    @Override
+    public void onCityClick(City city) {
+        options.putString(WeatherActivity.cityKey, city.getName());
+        options.putString(WeatherActivity.temperatureKey, city.getTemperature());
+        options.putInt(WeatherActivity.weatherImageKey, city.getWeatherImage());
+        options.putString(WeatherActivity.humidityKey, city.getHumidity());
+        options.putString(WeatherActivity.uvIndexKey, city.getUvIndex());
+        options.putString(WeatherActivity.chanceOfRainKey, city.getChanceOfRain());
+        options.putString(WeatherActivity.pressureKey, city.getPressure());
+        options.putString(WeatherActivity.windSpeedKey, city.getWindSpeed());
+        options.putString(WeatherActivity.windDirectKey, city.getWindDirection());
+        options.putString(WeatherActivity.sunriseKey, city.getSunrise());
+        options.putString(WeatherActivity.sunsetKey, city.getSunset());
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            cityName.setText(options.getString(WeatherActivity.cityKey));
+            temperature.setText(options.getString(WeatherActivity.temperatureKey));
+            weatherImage.setImageResource(options.getInt(WeatherActivity.weatherImageKey));
+            setAllSettings();
         } else {
-            options.putBoolean(box.getText().toString(), false);
+            Intent intent = new Intent(Objects.requireNonNull(getActivity()), WeatherActivity.class);
+            intent.putExtra(WeatherActivity.optionsDataKey, options);
+            intent.putExtra(WeatherActivity.settingsDataKey, settings);
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
         }
+    }
+
+    private void setAllSettings() {
+        setSettingValue(temperature, SettingsActivity.tempValueCKey, getString(R.string.degreesC));
+        setSettingValue(temperature,SettingsActivity.tempValueFKey, getString(R.string.degreesF));
+    }
+
+    private void setSettingValue(TextView textView, String key, String units) {
+        String value = textView.getText().toString();
+        boolean isUnits = value.contains(units);
+
+        if (settings.getBoolean(key) && !isUnits) {
+            int newDigitValue;
+            if (key.equals(SettingsActivity.tempValueCKey)) {
+                newDigitValue = fToC(digitalValue(value));
+            } else if (key.equals(SettingsActivity.tempValueFKey)) {
+                newDigitValue = cToF(digitalValue(value));
+            } else {
+                newDigitValue = 0;
+            }
+            textView.setText(newValue(value, newDigitValue, units));
+        }
+    }
+
+    private int digitalValue(String value) {
+        StringBuilder sb = new StringBuilder(value);
+        StringBuilder digitalValue = new StringBuilder();
+        for (int i = 0; i < sb.length(); i++) {
+            if (Character.isDigit(sb.charAt(i))) {
+                digitalValue.append(sb.charAt(i));
+            }
+        }
+        return Integer.parseInt(digitalValue.toString());
+    }
+
+    private String newValue(String value, int newDigitValue, String units) {
+        StringBuilder sb = new StringBuilder(value);
+        StringBuilder newValue = new StringBuilder();
+
+        if (!Character.isDigit(sb.charAt(0))) {
+            newValue.append(sb.charAt(0)).append(newDigitValue).append(units);
+        } else {
+            newValue.append(newDigitValue).append(" ").append(units);
+        }
+
+        return newValue.toString();
+    }
+
+    private int cToF(int valC) {
+        return (int) Math.round(valC * 1.8 + 32);
+    }
+
+    private int fToC(int valF) {
+        return (int) Math.round((valF - 32) / 1.8);
     }
 }
