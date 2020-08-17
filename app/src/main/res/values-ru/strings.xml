@@ -15,7 +15,7 @@
     <string name="valueOfPressure">763 мм</string>
     <string name="valueOfWindSpeed">3 м/с</string>
     <string name="valueOfWindDirection">ЮЗ</string>
-    <string name="inputCityHint">введите название города</string>
+    <string name="inputCityHint">добавьте новый город</string>
     <string name="temperature_unit">Температура в:</string>
     <string name="wind_speed_units">Скорость ветра в:</string>
     <string name="ms">м/с</string>

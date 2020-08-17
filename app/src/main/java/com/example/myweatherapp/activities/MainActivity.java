@@ -7,11 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkTheme();
         setContentView(R.layout.activity_main);
 
     }
@@ -31,4 +34,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    private void checkTheme() {
+        if (getIntent().getBundleExtra(WeatherActivity.settingsDataKey) != null) {
+            if (Objects.requireNonNull(getIntent().getBundleExtra(WeatherActivity.settingsDataKey)).getBoolean(SettingsActivity.nightThemeKey)) {
+                setTheme(R.style.AppThemeDark);
+            } else {
+                setTheme(R.style.AppTheme);
+            }
+        }
+    }
+
 }

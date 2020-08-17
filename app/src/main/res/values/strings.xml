@@ -21,7 +21,7 @@
     <string name="valueOfWindDirection">SW</string>
     <string name="valueOfSunrise" translatable="false">4:31</string>
     <string name="valueOfSunset" translatable="false">20:44</string>
-    <string name="inputCityHint">enter the city name</string>
+    <string name="inputCityHint">add a new city</string>
     <string name="temperature_unit">Temperature unit:</string>
     <string name="degreesC" translatable="false">°C</string>
     <string name="degreesF" translatable="false">°F</string>
@@ -34,4 +34,5 @@
     <string name="night_day_theme">Night/day theme:</string>
     <string name="night_theme">Night theme</string>
     <string name="day_theme">Day theme</string>
+    <string name="wrong_name_message" translatable="false">Wrong city name!</string>
 </resources>
