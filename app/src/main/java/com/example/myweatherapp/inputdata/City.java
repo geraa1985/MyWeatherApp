@@ -2,6 +2,7 @@ package com.example.myweatherapp.inputdata;
 
 import android.annotation.SuppressLint;
 
+import com.example.myweatherapp.BuildConfig;
 import com.example.myweatherapp.fragments.OptionsFragment;
 import com.example.myweatherapp.inputdata.model.WeatherRequest;
 import com.google.gson.Gson;
@@ -43,7 +44,7 @@ public class City {
 
     public void getWeather() {
         try {
-            final URL uri = new URL("https://api.openweathermap.org/data/2.5/weather?q=" + name + "&lang=ru&units=metric&appid=3f7af38d646bdac5b9dd4040b029da40");
+            final URL uri = new URL("https://api.openweathermap.org/data/2.5/weather?q=" + name + "&lang=ru&units=metric&appid=" + BuildConfig.WEATHER_API_KEY);
             HttpsURLConnection urlConnection = null;
             try {
                 urlConnection = (HttpsURLConnection) uri.openConnection();
