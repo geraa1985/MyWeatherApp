@@ -54,7 +54,7 @@ public class WeatherActivity extends AppCompatActivity {
     public static final String weatherImageKey = "weatherImageKey";
     public static final String humidityKey = "humidityKey";
     public static final String feelsLikeTempKey = "feelsLikeTempKey";
-    public static final String chanceOfRainKey = "chanceOfRainKey";
+    public static final String visibilityKey = "chanceOfRainKey";
     public static final String pressureKey = "pressureKey";
     public static final String windSpeedKey = "windSpeedKey";
     public static final String windDirectKey = "windDirectKey";
@@ -232,7 +232,7 @@ public class WeatherActivity extends AppCompatActivity {
         Picasso.get().load(options.getString(weatherImageKey)).resizeDimen(R.dimen.width_weatherImage,R.dimen.height_weatherImage).into(weatherImage);
         valueOfHumidity.setText(options.getString(humidityKey));
         valueOfFeelsLikeTemp.setText(options.getString(feelsLikeTempKey));
-        valueOfChanceOfRain.setText(options.getString(chanceOfRainKey));
+        valueOfChanceOfRain.setText(options.getString(visibilityKey));
         valueOfPressure.setText(options.getString(pressureKey));
         valueOfWindSpeed.setText(options.getString(windSpeedKey));
         valueOfWindDirection.setText(options.getString(windDirectKey));

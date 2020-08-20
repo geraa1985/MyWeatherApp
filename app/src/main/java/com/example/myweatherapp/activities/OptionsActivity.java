@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 
 import android.os.Handler;
+import android.os.Looper;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class OptionsActivity extends AppCompatActivity {
     private Bundle options = new Bundle();
     private Bundle settings = new Bundle();
 
-    Handler handler = new Handler();
+    Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class OptionsActivity extends AppCompatActivity {
         checkAllOfOptions();
         Intent intent = new Intent(this, WeatherActivity.class);
         intent.putExtra(WeatherActivity.optionsDataKey, options);
+        intent.putExtra(WeatherActivity.settingsDataKey, settings);
         startActivity(intent);
         finish();
     }
@@ -84,8 +86,8 @@ public class OptionsActivity extends AppCompatActivity {
     private void setOnClickBehaviourToSave() {
         saveImage.setOnClickListener((v) -> {
             enterCity.clearFocus();
-            if (isValid) {
-                if (newCityName != null) {
+            if (newCityName != null) {
+                if (isValid) {
                     new Thread(() -> {
                         newCity = new City(newCityName);
                         City.getCitiesList().addFirst(newCityName);
@@ -99,14 +101,14 @@ public class OptionsActivity extends AppCompatActivity {
                             finish();
                         });
                     }).start();
-                } else {
-                    checkAllOfOptions();
-                    Intent intent = new Intent(this, WeatherActivity.class);
-                    intent.putExtra(WeatherActivity.optionsDataKey, options);
-                    intent.putExtra(WeatherActivity.settingsDataKey, settings);
-                    startActivity(intent);
-                    finish();
                 }
+            } else {
+                checkAllOfOptions();
+                Intent intent = new Intent(this, WeatherActivity.class);
+                intent.putExtra(WeatherActivity.optionsDataKey, options);
+                intent.putExtra(WeatherActivity.settingsDataKey, settings);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -170,7 +172,7 @@ public class OptionsActivity extends AppCompatActivity {
         options.putString(WeatherActivity.weatherImageKey, city.getWeatherImage());
         options.putString(WeatherActivity.humidityKey, city.getHumidity());
         options.putString(WeatherActivity.feelsLikeTempKey, city.getFeelsLikeTemp());
-        options.putString(WeatherActivity.chanceOfRainKey, city.getVisibility());
+        options.putString(WeatherActivity.visibilityKey, city.getVisibility());
         options.putString(WeatherActivity.pressureKey, city.getPressure());
         options.putString(WeatherActivity.windSpeedKey, city.getWindSpeed());
         options.putString(WeatherActivity.windDirectKey, city.getWindDirection());

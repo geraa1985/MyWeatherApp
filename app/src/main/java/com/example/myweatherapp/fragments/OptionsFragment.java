@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
     private Bundle options = new Bundle();
     private Bundle settings = new Bundle();
 
-    Handler handler = new Handler();
+    Handler handler = new Handler(Looper.getMainLooper());
 
     public OptionsFragment() {
     }
@@ -99,7 +100,7 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
             options.putString(WeatherActivity.weatherImageKey, city.getWeatherImage());
             options.putString(WeatherActivity.humidityKey, city.getHumidity());
             options.putString(WeatherActivity.feelsLikeTempKey, city.getFeelsLikeTemp());
-            options.putString(WeatherActivity.chanceOfRainKey, city.getVisibility());
+            options.putString(WeatherActivity.visibilityKey, city.getVisibility());
             options.putString(WeatherActivity.pressureKey, city.getPressure());
             options.putString(WeatherActivity.windSpeedKey, city.getWindSpeed());
             options.putString(WeatherActivity.windDirectKey, city.getWindDirection());
