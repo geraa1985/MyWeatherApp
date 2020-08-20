@@ -3,8 +3,8 @@
     <string name="city">Moscow</string>
     <string name="temperature" translatable="false">+24°C</string>
     <string name="humidity">Humidity</string>
-    <string name="uv_index">UV index</string>
-    <string name="chance_of_rain">Chance of rain</string>
+    <string name="feelsLikeTemp">Feels like</string>
+    <string name="visibility">Visibility</string>
     <string name="pressure">Pressure</string>
     <string name="wind_speed">Wind speed</string>
     <string name="wind_direction">Wind direction</string>
@@ -14,8 +14,8 @@
     <string name="weatherIcon">WeatherIcon</string>
     <string name="settings">Settings</string>
     <string name="valueOfHumidity" translatable="false">58%</string>
-    <string name="valueOfUVIndex" translatable="false">3</string>
-    <string name="valueOfChanceOfRain" translatable="false">12%</string>
+    <string name="valueOfFeelsLikeTemp" translatable="false">+17°C</string>
+    <string name="valueOfVisibility" translatable="false">1000m</string>
     <string name="valueOfPressure">763 mm</string>
     <string name="valueOfWindSpeed">3 m/s</string>
     <string name="valueOfWindDirection">SW</string>

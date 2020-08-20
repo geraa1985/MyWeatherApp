@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.myweatherapp.R;
 import com.example.myweatherapp.activities.SettingsActivity;
 import com.example.myweatherapp.activities.WeatherActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -74,7 +75,7 @@ public class WeatherFragment extends Fragment {
     private void setCityFromOptions() {
         cityName.setText(options.getString(WeatherActivity.cityKey));
         temperature.setText(options.getString(WeatherActivity.temperatureKey));
-        weatherImage.setImageResource(options.getInt(WeatherActivity.weatherImageKey));
+        Picasso.get().load(options.getString(WeatherActivity.weatherImageKey)).resizeDimen(R.dimen.width_weatherImage, R.dimen.height_weatherImage).into(weatherImage);
     }
 
     private void getInfoFromWeatherFragment() {

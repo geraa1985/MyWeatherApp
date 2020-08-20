@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -27,7 +28,7 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView temperature;
     private ImageView weatherImage;
     private TextView valueOfHumidity;
-    private TextView valueOfUVIndex;
+    private TextView valueOfFeelsLikeTemp;
     private TextView valueOfChanceOfRain;
     private TextView valueOfPressure;
     private TextView valueOfWindSpeed;
@@ -39,7 +40,7 @@ public class WeatherActivity extends AppCompatActivity {
     private Bundle settings = new Bundle();
 
     private TableRow rowHumidity;
-    private TableRow rowUVIndex;
+    private TableRow rowFeelsLikeTemp;
     private TableRow rowChanceOfRain;
     private TableRow rowPressure;
     private TableRow rowWindSpeed;
@@ -51,7 +52,7 @@ public class WeatherActivity extends AppCompatActivity {
     public static final String temperatureKey = "temperatureKey";
     public static final String weatherImageKey = "weatherImageKey";
     public static final String humidityKey = "humidityKey";
-    public static final String uvIndexKey = "uvIndexKey";
+    public static final String feelsLikeTempKey = "feelsLikeTempKey";
     public static final String chanceOfRainKey = "chanceOfRainKey";
     public static final String pressureKey = "pressureKey";
     public static final String windSpeedKey = "windSpeedKey";
@@ -61,7 +62,6 @@ public class WeatherActivity extends AppCompatActivity {
 
     public static final String optionsDataKey = "optionsDataKey";
     public static final String settingsDataKey = "settingsDataKey";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +123,7 @@ public class WeatherActivity extends AppCompatActivity {
         temperature = findViewById(R.id.temperatureReading);
         weatherImage = findViewById(R.id.weatherImage);
         valueOfHumidity = findViewById(R.id.valueOfHumidity);
-        valueOfUVIndex = findViewById(R.id.valueOfUVIndex);
+        valueOfFeelsLikeTemp = findViewById(R.id.valueOfUVIndex);
         valueOfChanceOfRain = findViewById(R.id.valueOfChanceOfRain);
         valueOfPressure = findViewById(R.id.valueOfPressure);
         valueOfWindSpeed = findViewById(R.id.valueOfWindSpeed);
@@ -138,7 +138,7 @@ public class WeatherActivity extends AppCompatActivity {
         listCitiesImage = findViewById(R.id.listImage);
 
         rowHumidity = findViewById(R.id.rowHumidity);
-        rowUVIndex = findViewById(R.id.rowUVIndex);
+        rowFeelsLikeTemp = findViewById(R.id.rowUVIndex);
         rowChanceOfRain = findViewById(R.id.rowChanceOfRain);
         rowPressure = findViewById(R.id.rowPressure);
         rowWindSpeed = findViewById(R.id.rowWindSpeed);
@@ -216,7 +216,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private void setAllOptionsFromOptions() {
         setVisibilityFromOptions(rowHumidity);
-        setVisibilityFromOptions(rowUVIndex);
+        setVisibilityFromOptions(rowFeelsLikeTemp);
         setVisibilityFromOptions(rowChanceOfRain);
         setVisibilityFromOptions(rowPressure);
         setVisibilityFromOptions(rowWindSpeed);
@@ -228,9 +228,9 @@ public class WeatherActivity extends AppCompatActivity {
     private void setCityFromOptions() {
         cityName.setText(options.getString(cityKey));
         temperature.setText(options.getString(temperatureKey));
-        weatherImage.setImageResource(options.getInt(weatherImageKey));
+        Picasso.get().load(options.getString(weatherImageKey)).resizeDimen(R.dimen.width_weatherImage, R.dimen.height_weatherImage).into(weatherImage);
         valueOfHumidity.setText(options.getString(humidityKey));
-        valueOfUVIndex.setText(options.getString(uvIndexKey));
+        valueOfFeelsLikeTemp.setText(options.getString(feelsLikeTempKey));
         valueOfChanceOfRain.setText(options.getString(chanceOfRainKey));
         valueOfPressure.setText(options.getString(pressureKey));
         valueOfWindSpeed.setText(options.getString(windSpeedKey));
@@ -252,7 +252,7 @@ public class WeatherActivity extends AppCompatActivity {
     private void getAllOptionsFromDisplay() {
         getCityFromMainDisplay();
         getVisibilityFromMainDisplay(rowHumidity);
-        getVisibilityFromMainDisplay(rowUVIndex);
+        getVisibilityFromMainDisplay(rowFeelsLikeTemp);
         getVisibilityFromMainDisplay(rowChanceOfRain);
         getVisibilityFromMainDisplay(rowPressure);
         getVisibilityFromMainDisplay(rowWindSpeed);
@@ -288,12 +288,12 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     private void setAllSettings() {
-        setSettingValue(temperature,SettingsActivity.tempValueCKey, getString(R.string.degreesC));
-        setSettingValue(temperature,SettingsActivity.tempValueFKey, getString(R.string.degreesF));
-        setSettingValue(valueOfPressure,SettingsActivity.pressureValMmKey, getString(R.string.mm));
-        setSettingValue(valueOfPressure,SettingsActivity.pressureValGPaKey, getString(R.string.gpa));
-        setSettingValue(valueOfWindSpeed,SettingsActivity.windSpeedValMSKey, getString(R.string.ms));
-        setSettingValue(valueOfWindSpeed,SettingsActivity.windSpeedValKmHKey, getString(R.string.kmh));
+        setSettingValue(temperature, SettingsActivity.tempValueCKey, getString(R.string.degreesC));
+        setSettingValue(temperature, SettingsActivity.tempValueFKey, getString(R.string.degreesF));
+        setSettingValue(valueOfPressure, SettingsActivity.pressureValMmKey, getString(R.string.mm));
+        setSettingValue(valueOfPressure, SettingsActivity.pressureValGPaKey, getString(R.string.gpa));
+        setSettingValue(valueOfWindSpeed, SettingsActivity.windSpeedValMSKey, getString(R.string.ms));
+        setSettingValue(valueOfWindSpeed, SettingsActivity.windSpeedValKmHKey, getString(R.string.kmh));
     }
 
     private void setSettingValue(TextView textView, String key, String units) {

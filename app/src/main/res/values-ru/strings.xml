@@ -2,8 +2,8 @@
     <string name="app_name">Погода</string>
     <string name="city">Москва</string>
     <string name="humidity">Влажность</string>
-    <string name="uv_index">УФ индекс</string>
-    <string name="chance_of_rain">Вероятность дождя</string>
+    <string name="feelsLikeTemp">Ощущается как</string>
+    <string name="visibility">Видимость</string>
     <string name="pressure">Давление</string>
     <string name="wind_speed">Скорость ветра</string>
     <string name="wind_direction">Направление ветра</string>
