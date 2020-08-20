@@ -75,7 +75,7 @@ public class WeatherFragment extends Fragment {
     private void setCityFromOptions() {
         cityName.setText(options.getString(WeatherActivity.cityKey));
         temperature.setText(options.getString(WeatherActivity.temperatureKey));
-        Picasso.get().load(options.getString(WeatherActivity.weatherImageKey)).resizeDimen(R.dimen.width_weatherImage, R.dimen.height_weatherImage).into(weatherImage);
+        Picasso.get().load(options.getString(WeatherActivity.weatherImageKey)).resizeDimen(R.dimen.width_weatherImage,R.dimen.height_weatherImage).into(weatherImage);
     }
 
     private void getInfoFromWeatherFragment() {

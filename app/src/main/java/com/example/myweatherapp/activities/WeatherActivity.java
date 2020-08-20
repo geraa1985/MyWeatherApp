@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myweatherapp.R;
 import com.squareup.picasso.Picasso;
 
+
 import java.util.Objects;
 
 public class WeatherActivity extends AppCompatActivity {
@@ -228,7 +229,7 @@ public class WeatherActivity extends AppCompatActivity {
     private void setCityFromOptions() {
         cityName.setText(options.getString(cityKey));
         temperature.setText(options.getString(temperatureKey));
-        Picasso.get().load(options.getString(weatherImageKey)).resizeDimen(R.dimen.width_weatherImage, R.dimen.height_weatherImage).into(weatherImage);
+        Picasso.get().load(options.getString(weatherImageKey)).resizeDimen(R.dimen.width_weatherImage,R.dimen.height_weatherImage).into(weatherImage);
         valueOfHumidity.setText(options.getString(humidityKey));
         valueOfFeelsLikeTemp.setText(options.getString(feelsLikeTempKey));
         valueOfChanceOfRain.setText(options.getString(chanceOfRainKey));
