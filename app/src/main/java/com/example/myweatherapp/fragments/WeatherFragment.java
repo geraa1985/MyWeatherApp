@@ -1,27 +1,21 @@
 package com.example.myweatherapp.fragments;
 
 import android.content.Intent;
-
 import android.net.Uri;
-
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import androidx.fragment.app.Fragment;
 
 import com.example.myweatherapp.R;
 import com.example.myweatherapp.activities.SettingsActivity;
 import com.example.myweatherapp.activities.WeatherActivity;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -175,5 +169,9 @@ public class WeatherFragment extends Fragment {
 
     private int fToC(int valF) {
         return (int) Math.round((valF - 32) / 1.8);
+    }
+
+    public void getOptionsFromContext(Bundle bundle) {
+        this.options = bundle;
     }
 }

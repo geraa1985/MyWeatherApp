@@ -1,23 +1,23 @@
 package com.example.myweatherapp.activities;
 
 import android.content.Intent;
-
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
+import com.example.myweatherapp.fragments.WeatherFragment;
+import com.example.myweatherapp.interfaces.OnFragmentInteractionListener;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkTheme();
         setContentView(R.layout.activity_main);
-
     }
 
     @Override
@@ -45,4 +45,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onFragmentInteraction(Bundle bundle) {
+        WeatherFragment fragment = (WeatherFragment) getSupportFragmentManager().findFragmentById(R.id.weatherFrame);
+        if (fragment != null && fragment.isInLayout()) {
+            fragment.getOptionsFromContext(bundle);
+        }
+    }
 }

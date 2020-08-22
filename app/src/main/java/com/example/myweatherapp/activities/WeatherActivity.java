@@ -1,26 +1,19 @@
 package com.example.myweatherapp.activities;
 
 import android.annotation.SuppressLint;
-
 import android.content.Intent;
 import android.content.res.Configuration;
-
 import android.net.Uri;
-
 import android.os.Bundle;
-
 import android.view.View;
-
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -288,6 +281,7 @@ public class WeatherActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ResourceType")
     private void getSettingsFromMainDisplay() {
         settings.putBoolean(SettingsActivity.tempValueCKey, temperature.getText().toString().contains(getString(R.string.degreesC)));
         settings.putBoolean(SettingsActivity.tempValueFKey, temperature.getText().toString().contains(getString(R.string.degreesF)));
@@ -296,6 +290,7 @@ public class WeatherActivity extends AppCompatActivity {
         settings.putBoolean(SettingsActivity.windSpeedValMSKey, valueOfWindSpeed.getText().toString().contains(getString(R.string.ms)));
         settings.putBoolean(SettingsActivity.windSpeedValKmHKey, valueOfWindSpeed.getText().toString().contains(getString(R.string.kmh)));
     }
+
 
     private void setAllSettings() {
         setSettingValue(temperature, SettingsActivity.tempValueCKey, getString(R.string.degreesC));

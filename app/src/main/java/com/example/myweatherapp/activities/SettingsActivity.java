@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
@@ -52,19 +53,43 @@ public class SettingsActivity extends AppCompatActivity {
         setOnClickBehaviourToSave();
         setSettingsFromMainDisplay();
         onChangeTempValue();
-        onChangePressValue();
-        onChangeWindSpeedValue();
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            onChangePressValue();
+            onChangeWindSpeedValue();
+        }
         onChangeThemeRadioButton();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, WeatherActivity.class);
-        intent.putExtra(WeatherActivity.optionsDataKey, options);
-        intent.putExtra(WeatherActivity.settingsDataKey, settings);
-        startActivity(intent);
-        finish();
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Intent intent = new Intent(this, WeatherActivity.class);
+            intent.putExtra(WeatherActivity.optionsDataKey, options);
+            intent.putExtra(WeatherActivity.settingsDataKey, settings);
+            startActivity(intent);
+            finish();
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(WeatherActivity.optionsDataKey, options);
+            intent.putExtra(WeatherActivity.settingsDataKey, settings);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBundle(WeatherActivity.optionsDataKey, options);
+        outState.putBundle(WeatherActivity.settingsDataKey, settings);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        options = savedInstanceState.getBundle(WeatherActivity.optionsDataKey);
+        settings = savedInstanceState.getBundle(WeatherActivity.settingsDataKey);
     }
 
     private void findViews() {
@@ -107,12 +132,14 @@ public class SettingsActivity extends AppCompatActivity {
     private void setSettingsFromMainDisplay() {
         tempValueC.setChecked(settings.getBoolean(tempValueCKey));
         tempValueF.setChecked(settings.getBoolean(tempValueFKey));
-        pressureValMm.setChecked(settings.getBoolean(pressureValMmKey));
-        pressureValGPa.setChecked(settings.getBoolean(pressureValGPaKey));
-        windSpeedValMS.setChecked(settings.getBoolean(windSpeedValMSKey));
-        windSpeedValKmH.setChecked(settings.getBoolean(windSpeedValKmHKey));
-        nightTheme.setChecked(settings.getBoolean(nightThemeKey));
-        dayTheme.setChecked(settings.getBoolean(dayThemeKey));
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            pressureValMm.setChecked(settings.getBoolean(pressureValMmKey));
+            pressureValGPa.setChecked(settings.getBoolean(pressureValGPaKey));
+            windSpeedValMS.setChecked(settings.getBoolean(windSpeedValMSKey));
+            windSpeedValKmH.setChecked(settings.getBoolean(windSpeedValKmHKey));
+            nightTheme.setChecked(settings.getBoolean(nightThemeKey));
+            dayTheme.setChecked(settings.getBoolean(dayThemeKey));
+        }
     }
 
     private void onChangeTempValue() {
@@ -169,26 +196,23 @@ public class SettingsActivity extends AppCompatActivity {
     private void onChangeThemeRadioButton() {
         theme.setOnCheckedChangeListener((radioGroup, id) -> {
             Intent intent = new Intent(this, SettingsActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
             switch (id) {
                 case R.id.nightTheme:
-                    nightTheme.setChecked(true);
                     settings.putBoolean(nightThemeKey, true);
                     settings.putBoolean(dayThemeKey, false);
                     intent.putExtra(WeatherActivity.optionsDataKey, options);
                     intent.putExtra(WeatherActivity.settingsDataKey, settings);
-                    finish();
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.dayTheme:
-                    dayTheme.setChecked(true);
                     settings.putBoolean(nightThemeKey, false);
                     settings.putBoolean(dayThemeKey, true);
                     intent.putExtra(WeatherActivity.optionsDataKey, options);
                     intent.putExtra(WeatherActivity.settingsDataKey, settings);
-                    finish();
                     startActivity(intent);
+                    finish();
                     break;
                 default:
                     break;

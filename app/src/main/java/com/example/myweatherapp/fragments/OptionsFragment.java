@@ -1,6 +1,7 @@
 package com.example.myweatherapp.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.example.myweatherapp.activities.WeatherActivity;
 import com.example.myweatherapp.adapters.CitiesListRVAdapter;
 import com.example.myweatherapp.inputdata.City;
 import com.example.myweatherapp.interfaces.IRVonCityClick;
+import com.example.myweatherapp.interfaces.OnFragmentInteractionListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -46,15 +48,25 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
     private Bundle options = new Bundle();
     private Bundle settings = new Bundle();
 
+    private OnFragmentInteractionListener mListener;
+
     Handler handler = new Handler(Looper.getMainLooper());
 
-    public OptionsFragment() {
-    }
-
-    @Nullable
+       @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_options, container, false);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            mListener = (OnFragmentInteractionListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " должен реализовывать интерфейс OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -106,6 +118,7 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
             options.putString(WeatherActivity.windDirectKey, city.getWindDirection());
             options.putString(WeatherActivity.sunriseKey, city.getSunrise());
             options.putString(WeatherActivity.sunsetKey, city.getSunset());
+            mListener.onFragmentInteraction(options);
 
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 cityName.setText(options.getString(WeatherActivity.cityKey));
@@ -175,4 +188,5 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
     private int fToC(int valF) {
         return (int) Math.round((valF - 32) / 1.8);
     }
+
 }
