@@ -2,11 +2,11 @@
     <string name="app_name">Погода</string>
     <string name="city">Москва</string>
     <string name="humidity">Влажность</string>
-    <string name="feelsLikeTemp">Ощущается как</string>
+    <string name="feelsLikeTemp">Ощущается</string>
     <string name="visibility">Видимость</string>
     <string name="pressure">Давление</string>
     <string name="wind_speed">Скорость ветра</string>
-    <string name="wind_direction">Направление ветра</string>
+    <string name="wind_direction">Напр-е ветра</string>
     <string name="sunrise">Восход</string>
     <string name="sunset">Закат</string>
     <string name="options">Опции</string>
@@ -22,6 +22,7 @@
     <string name="kmh">км/ч</string>
     <string name="pressure_unit">Дваление в:</string>
     <string name="mm">мм</string>
+    <string name="m">м</string>
     <string name="gpa">гПа</string>
     <string name="night_day_theme">Ночная/дневная тема:</string>
     <string name="night_theme">Ночная тема</string>

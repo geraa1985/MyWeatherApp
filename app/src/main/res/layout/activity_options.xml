@@ -119,11 +119,11 @@
             android:maxWidth="@dimen/maxWidthEnterCity"
             android:layout_height="wrap_content"
             android:hint="@string/inputCityHint"
-            android:lines="1"
             android:fontFamily="@font/bad_script"
             android:textSize="@dimen/textSize_enterCity"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

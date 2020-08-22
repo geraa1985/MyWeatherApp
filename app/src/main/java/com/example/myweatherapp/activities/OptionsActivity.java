@@ -1,11 +1,11 @@
 package com.example.myweatherapp.activities;
 
 import android.content.Intent;
+
 import android.os.Bundle;
-
-
 import android.os.Handler;
 import android.os.Looper;
+
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myweatherapp.R;
 import com.example.myweatherapp.inputdata.City;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
@@ -36,7 +37,7 @@ public class OptionsActivity extends AppCompatActivity {
 
     private boolean isValid;
 
-    private Pattern newCityRules = Pattern.compile("^[A-Z][a-z]{2,}$");
+    private Pattern newCityRules = Pattern.compile("^[A-ZА-ЯЁ\\s][a-zа-яё\\s]{2,}$+|");
     private String newCityName;
     private City newCity;
 
@@ -86,10 +87,17 @@ public class OptionsActivity extends AppCompatActivity {
     private void setOnClickBehaviourToSave() {
         saveImage.setOnClickListener((v) -> {
             enterCity.clearFocus();
-            if (newCityName != null) {
+            if (newCityName == null) {
+                checkAllOfOptions();
+                Intent intent = new Intent(this, WeatherActivity.class);
+                intent.putExtra(WeatherActivity.optionsDataKey, options);
+                intent.putExtra(WeatherActivity.settingsDataKey, settings);
+                startActivity(intent);
+                finish();
+            } else {
                 if (isValid) {
                     new Thread(() -> {
-                        newCity = new City(newCityName);
+                        newCity = new City(newCityName, this);
                         City.getCitiesList().addFirst(newCityName);
                         handler.post(() -> {
                             setChangeFromNewCity(newCity);
@@ -102,13 +110,6 @@ public class OptionsActivity extends AppCompatActivity {
                         });
                     }).start();
                 }
-            } else {
-                checkAllOfOptions();
-                Intent intent = new Intent(this, WeatherActivity.class);
-                intent.putExtra(WeatherActivity.optionsDataKey, options);
-                intent.putExtra(WeatherActivity.settingsDataKey, settings);
-                startActivity(intent);
-                finish();
             }
         });
     }
@@ -155,9 +156,9 @@ public class OptionsActivity extends AppCompatActivity {
     private boolean validate(TextView inputText, Pattern newCityRules) {
         String value = inputText.getText().toString();
         if (!value.equals("")) {
+            newCityName = value;
             if (newCityRules.matcher(value).matches()) {
                 inputText.setError(null);
-                newCityName = value;
                 return true;
             } else {
                 inputText.setError(getString(R.string.wrong_name_message));

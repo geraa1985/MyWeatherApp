@@ -1,8 +1,10 @@
 package com.example.myweatherapp.inputdata;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 
 import com.example.myweatherapp.BuildConfig;
+import com.example.myweatherapp.R;
 import com.example.myweatherapp.fragments.OptionsFragment;
 import com.example.myweatherapp.inputdata.model.WeatherRequest;
 import com.google.gson.Gson;
@@ -15,6 +17,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedList;
+import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -30,11 +33,15 @@ public class City {
     private String windDirection;
     private String sunrise;
     private String sunset;
+    private String lang = Locale.getDefault().getISO3Language().substring(0, 2);
+
+    private Context context;
 
     private static LinkedList<String> citiesList = new LinkedList<>(Arrays.asList(OptionsFragment.getCities()));
 
-    public City(String name) {
+    public City(String name, Context context) {
         this.name = name;
+        this.context = context;
         this.getWeather();
     }
 
@@ -44,7 +51,7 @@ public class City {
 
     public void getWeather() {
         try {
-            final URL uri = new URL("https://api.openweathermap.org/data/2.5/weather?q=" + name + "&lang=ru&units=metric&appid=" + BuildConfig.WEATHER_API_KEY);
+            final URL uri = new URL("https://api.openweathermap.org/data/2.5/weather?q=" + name + "&lang=" + lang + "&units=metric&appid=" + BuildConfig.WEATHER_API_KEY);
             HttpsURLConnection urlConnection = null;
             try {
                 urlConnection = (HttpsURLConnection) uri.openConnection();
@@ -69,8 +76,8 @@ public class City {
 
     @SuppressLint("SimpleDateFormat")
     private void displayWeather(WeatherRequest weatherRequest) {
-        String currentTemp = Math.round(weatherRequest.getMain().getTemp()) + "°C";
-        String currentFeelsLikeTemp = Math.round(weatherRequest.getMain().getFeels_like()) + "°C";
+        String currentTemp = Math.round(weatherRequest.getMain().getTemp()) + context.getResources().getString(R.string.degreesC);
+        String currentFeelsLikeTemp = Math.round(weatherRequest.getMain().getFeels_like()) + context.getString(R.string.degreesC);
 
 
         if (Character.isDigit(currentTemp.charAt(0)) && currentTemp.charAt(0) != '0') {
@@ -86,20 +93,20 @@ public class City {
         }
 
         this.weatherImage = "http://openweathermap.org/img/wn/" + weatherRequest.getWeather()[0].getIcon() + "@2x.png";
-        this.humidity = weatherRequest.getMain().getHumidity() + "%";
-        this.visibility = weatherRequest.getVisibility() + " m";
-        this.pressure = weatherRequest.getMain().getPressure() + " gPa";
-        this.windSpeed = Math.round(weatherRequest.getWind().getSpeed()) + " m/s";
-        this.windDirection = weatherRequest.getWind().getDeg() + "°";
+        this.humidity = weatherRequest.getMain().getHumidity() + context.getString(R.string.percent);
+        this.visibility = weatherRequest.getVisibility() + " " + context.getString(R.string.m);
+        this.pressure = weatherRequest.getMain().getPressure() + " " + context.getString(R.string.gpa);
+        this.windSpeed = Math.round(weatherRequest.getWind().getSpeed()) + " " + context.getString(R.string.ms);
+        this.windDirection = weatherRequest.getWind().getDeg() + context.getString(R.string.degrees);
 
 
-        this.sunrise = getTimeFromUnix(weatherRequest.getSys().getSunrise(), weatherRequest.getTimezone()) + " AM";
-        this.sunset = getTimeFromUnix(weatherRequest.getSys().getSunset(), weatherRequest.getTimezone()) + " PM";
+        this.sunrise = getTimeFromUnix(weatherRequest.getSys().getSunrise()) + " " + context.getString(R.string.am);
+        this.sunset = getTimeFromUnix(weatherRequest.getSys().getSunset()) + " " + context.getString(R.string.pm);
     }
 
-    private String getTimeFromUnix(long unixTime, int timezone) {
+    private String getTimeFromUnix(long unixTime) {
         Calendar myDate = Calendar.getInstance();
-        myDate.setTimeInMillis((unixTime + timezone) * 1000);
+        myDate.setTimeInMillis((unixTime) * 1000);
         return myDate.get(Calendar.HOUR) + ":" + myDate.get(Calendar.MINUTE) + ":" + myDate.get(Calendar.SECOND);
     }
 

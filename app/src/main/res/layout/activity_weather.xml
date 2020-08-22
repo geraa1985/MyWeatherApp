@@ -10,10 +10,13 @@
     <TextView
         android:id="@+id/cityName"
         android:layout_width="wrap_content"
+        android:maxWidth="@dimen/maxWidthEnterCity"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bad_script"
         android:text="@string/city"
         android:textSize="@dimen/textSize_city"
+        android:lines="1"
+        android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"

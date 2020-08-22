@@ -2,7 +2,9 @@ package com.example.myweatherapp.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+
 import android.os.Bundle;
+
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -85,7 +87,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setSettingsFromMainDisplay() {
-
         tempValueC.setChecked(settings.getBoolean(tempValueCKey));
         tempValueF.setChecked(settings.getBoolean(tempValueFKey));
         pressureValMm.setChecked(settings.getBoolean(pressureValMmKey));

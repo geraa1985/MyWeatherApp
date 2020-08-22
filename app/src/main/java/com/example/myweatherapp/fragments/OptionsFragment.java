@@ -1,10 +1,9 @@
 package com.example.myweatherapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-
-
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -92,14 +91,15 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
         cityRV.setAdapter(adapter);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onCityClick(City city) {
         handler.post(() -> {
             options.putString(WeatherActivity.cityKey, city.getName());
             options.putString(WeatherActivity.temperatureKey, city.getTemperature());
             options.putString(WeatherActivity.weatherImageKey, city.getWeatherImage());
-            options.putString(WeatherActivity.humidityKey, city.getHumidity());
             options.putString(WeatherActivity.feelsLikeTempKey, city.getFeelsLikeTemp());
+            options.putString(WeatherActivity.humidityKey, city.getHumidity());
             options.putString(WeatherActivity.visibilityKey, city.getVisibility());
             options.putString(WeatherActivity.pressureKey, city.getPressure());
             options.putString(WeatherActivity.windSpeedKey, city.getWindSpeed());
@@ -110,7 +110,7 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 cityName.setText(options.getString(WeatherActivity.cityKey));
                 temperature.setText(options.getString(WeatherActivity.temperatureKey));
-                Picasso.get().load(options.getString(WeatherActivity.weatherImageKey)).into(weatherImage);
+                Picasso.get().load(options.getString(WeatherActivity.weatherImageKey)).resizeDimen(R.dimen.width_weatherImage, R.dimen.height_weatherImage).into(weatherImage);
                 setAllSettings();
             } else {
                 Intent intent = new Intent(Objects.requireNonNull(getActivity()), WeatherActivity.class);
