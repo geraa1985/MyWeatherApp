@@ -111,6 +111,8 @@
         app:layout_constraintEnd_toStartOf="@+id/homeImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/inputCityHint"
+
         style="@style/MyTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -118,7 +120,6 @@
             android:layout_width="match_parent"
             android:maxWidth="@dimen/maxWidthEnterCity"
             android:layout_height="wrap_content"
-            android:hint="@string/inputCityHint"
             android:fontFamily="@font/bad_script"
             android:textSize="@dimen/textSize_enterCity"
             android:textStyle="bold"

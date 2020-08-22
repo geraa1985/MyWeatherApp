@@ -15,12 +15,12 @@
         android:fontFamily="@font/bad_script"
         android:text="@string/city"
         android:textSize="@dimen/textSize_city"
-        android:lines="1"
-        android:ellipsize="end"
+        android:ellipsize="marquee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:singleLine="true" />
 
     <TextView
         android:id="@+id/temperatureReading"

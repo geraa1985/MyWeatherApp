@@ -57,6 +57,16 @@ public class SettingsActivity extends AppCompatActivity {
         onChangeThemeRadioButton();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, WeatherActivity.class);
+        intent.putExtra(WeatherActivity.optionsDataKey, options);
+        intent.putExtra(WeatherActivity.settingsDataKey, settings);
+        startActivity(intent);
+        finish();
+    }
+
     private void findViews() {
         saveImage = findViewById(R.id.homeImage);
         tempValueC = findViewById(R.id.tempValueC);
