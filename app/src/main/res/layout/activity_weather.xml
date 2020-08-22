@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
-        android:src="?attr/settingsImage" />
+        android:src="@drawable/settings" />
 
     <ImageView
         android:id="@+id/optionImage"
@@ -69,7 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85"
-        android:src="?attr/optionsImage" />
+        android:src="@drawable/options" />
 
     <ImageView
         android:id="@+id/detailsImage"
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65"
-        android:src="?attr/yandexImage" />
+        android:src="@drawable/details" />
 
     <ImageView
         android:id="@+id/infoImage"
@@ -95,7 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
-        android:src="?attr/wikiImage" />
+        android:src="@drawable/info" />
 
     <ImageView
         android:id="@+id/listImage"
@@ -108,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05"
-        android:src="?attr/listImage" />
+        android:src="@drawable/list" />
 
     <TableLayout
         android:layout_width="@dimen/width_optionsTable"

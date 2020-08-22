@@ -6,13 +6,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@drawable/background</item>
         <item name="android:fontFamily">@font/bad_script</item>
-
-        <item name="saveImage">@drawable/home</item>
-        <item name="listImage">@drawable/list</item>
-        <item name="yandexImage">@drawable/details</item>
-        <item name="wikiImage">@drawable/info</item>
-        <item name="optionsImage">@drawable/options</item>
-        <item name="settingsImage">@drawable/settings</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.MaterialComponents">
@@ -21,13 +14,6 @@
         <item name="colorAccent">@color/colorAccentDark</item>
         <item name="android:windowBackground">@drawable/background_dark</item>
         <item name="android:fontFamily">@font/bad_script</item>
-
-        <item name="saveImage">@drawable/home_dark</item>
-        <item name="listImage">@drawable/list_dark</item>
-        <item name="yandexImage">@drawable/details_dark</item>
-        <item name="wikiImage">@drawable/info_dark</item>
-        <item name="optionsImage">@drawable/options_dark</item>
-        <item name="settingsImage">@drawable/settings_dark</item>
     </style>
 
 
