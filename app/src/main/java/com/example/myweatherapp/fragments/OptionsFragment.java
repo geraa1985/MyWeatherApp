@@ -75,6 +75,14 @@ public class OptionsFragment extends Fragment implements IRVonCityClick {
         findViews();
         setInfoFromBundle();
         setupAdapter();
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if (Objects.requireNonNull(getActivity()).getIntent().getBundleExtra(WeatherActivity.optionsDataKey) == null) {
+                new Thread(()->{
+                    City firstCity = new City(cities[0], getContext());
+                    onCityClick(firstCity);
+                }).start();
+            }
+        }
     }
 
     private void findViews() {
