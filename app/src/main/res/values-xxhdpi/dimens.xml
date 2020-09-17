@@ -48,6 +48,7 @@
     <dimen name="land_textSize_optionsTable">18sp</dimen>
 
     <dimen name="land_marginTop_settingsTableCheckBox">20dp</dimen>
+    <dimen name="option_checkbox_height">60dp</dimen>
 
 
 </resources>

@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
-        android:src="?attr/settingsImage" />
+        android:src="@drawable/settings" />
 
     <ImageView
         android:id="@+id/detailsImage"
@@ -72,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55"
-        android:src="?attr/yandexImage" />
+        android:src="@drawable/details" />
 
     <ImageView
         android:id="@+id/infoImage"
@@ -85,6 +85,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
-        android:src="?attr/wikiImage" />
+        android:src="@drawable/info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

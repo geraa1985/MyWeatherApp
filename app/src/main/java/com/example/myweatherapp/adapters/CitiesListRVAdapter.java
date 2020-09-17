@@ -3,6 +3,7 @@ package com.example.myweatherapp.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,14 +13,13 @@ import com.example.myweatherapp.R;
 import com.example.myweatherapp.inputdata.City;
 import com.example.myweatherapp.interfaces.IRVonCityClick;
 
-import java.util.List;
+import java.util.LinkedList;
 
 public class CitiesListRVAdapter extends RecyclerView.Adapter<CitiesListRVAdapter.ViewHolder> {
-    private List<City> cityList;
+    private LinkedList<String> cityList;
     private IRVonCityClick irVonCityClick;
 
-
-    public CitiesListRVAdapter(List<City> cityList, IRVonCityClick irVonCityClick) {
+    public CitiesListRVAdapter(LinkedList<String> cityList, IRVonCityClick irVonCityClick) {
         this.cityList = cityList;
         this.irVonCityClick = irVonCityClick;
     }
@@ -33,9 +33,9 @@ public class CitiesListRVAdapter extends RecyclerView.Adapter<CitiesListRVAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String text = cityList.get(position).getName();
+        String text = cityList.get(position);
         holder.setTextToTextView(text);
-        holder.setOnItemClick(cityList.get(position));
+        holder.setOnItemClick(text);
     }
 
     @Override
@@ -55,12 +55,13 @@ public class CitiesListRVAdapter extends RecyclerView.Adapter<CitiesListRVAdapte
             textView.setText(text);
         }
 
-        void setOnItemClick(City city) {
-            textView.setOnClickListener((v)->{
+        void setOnItemClick(String cityName) {
+            textView.setOnClickListener((v)-> new Thread(()->{
+                City city = new City(cityName, v.getContext());
                 if (irVonCityClick != null){
                     irVonCityClick.onCityClick(city);
                 }
-            });
+            }).start());
         }
     }
 }

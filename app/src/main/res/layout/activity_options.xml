@@ -14,12 +14,12 @@
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81">
+        app:layout_constraintVertical_bias="0.71">
 
         <CheckBox
             android:id="@+id/checkBoxHumidity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
             android:text="@string/humidity"
@@ -28,25 +28,25 @@
         <CheckBox
             android:id="@+id/checkBoxUVIndex"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
-            android:text="@string/uv_index"
+            android:text="@string/feelsLikeTemp"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
         <CheckBox
             android:id="@+id/checkBoxChanceOfRain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
-            android:text="@string/chance_of_rain"
+            android:text="@string/visibility"
             android:textSize="@dimen/textSize_optionsCheckBox" />
 
         <CheckBox
             android:id="@+id/checkBoxPressure"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
             android:text="@string/pressure"
@@ -55,7 +55,7 @@
         <CheckBox
             android:id="@+id/checkBoxWindSpeed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
             android:text="@string/wind_speed"
@@ -64,7 +64,7 @@
         <CheckBox
             android:id="@+id/checkBoxWindDirection"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
             android:text="@string/wind_direction"
@@ -73,7 +73,7 @@
         <CheckBox
             android:id="@+id/checkBoxSunrise"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
             android:text="@string/sunrise"
@@ -82,7 +82,7 @@
         <CheckBox
             android:id="@+id/checkBoxSunset"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/option_checkbox_height"
             android:checked="true"
             android:fontFamily="@font/bad_script"
             android:text="@string/sunset"
@@ -100,7 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05"
-        android:src="?attr/saveImage" />
+        android:src="@drawable/ok" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
@@ -111,6 +111,8 @@
         app:layout_constraintEnd_toStartOf="@+id/homeImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/inputCityHint"
+
         style="@style/MyTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -118,12 +120,11 @@
             android:layout_width="match_parent"
             android:maxWidth="@dimen/maxWidthEnterCity"
             android:layout_height="wrap_content"
-            android:hint="@string/inputCityHint"
-            android:lines="1"
             android:fontFamily="@font/bad_script"
             android:textSize="@dimen/textSize_enterCity"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

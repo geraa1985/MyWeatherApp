@@ -15,13 +15,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05"
-        android:src="?attr/saveImage" />
+        android:src="@drawable/ok" />
 
     <LinearLayout
         android:layout_width="@dimen/land_width_settingsTableCheckBox"
-        android:layout_height="@dimen/land_height_settingsTableCheckBox"
-        android:layout_marginTop="@dimen/land_marginTop_settingsTableCheckBox"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +36,7 @@
             android:textStyle="bold" />
 
         <RadioGroup
+            android:id="@+id/tempVal"
             android:layout_width="match_parent"
             android:layout_height="@dimen/land_height_settingsGroup">
 
@@ -58,79 +59,17 @@
                 android:textSize="@dimen/textSize_settingsValue" />
         </RadioGroup>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bad_script"
-            android:text="@string/wind_speed_units"
-            android:textSize="@dimen/textSize_settingsName"
-            android:textStyle="bold" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/land_height_settingsGroup">
-
-            <RadioButton
-                android:id="@+id/windSpeedValMS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bad_script"
-                android:text="@string/ms"
-                android:textSize="@dimen/textSize_settingsValue" />
-
-            <RadioButton
-                android:id="@+id/windSpeedValKmH"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bad_script"
-                android:text="@string/kmh"
-                android:textSize="@dimen/textSize_settingsValue" />
-        </RadioGroup>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="@dimen/land_width_settingsTableCheckBox"
-        android:layout_height="@dimen/land_height_settingsTableCheckBox"
-        android:layout_marginTop="@dimen/land_marginTop_settingsTableCheckBox"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bad_script"
-            android:text="@string/pressure_unit"
-            android:textSize="@dimen/textSize_settingsName"
-            android:textStyle="bold" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/land_height_settingsGroup">
-
-            <RadioButton
-                android:id="@+id/pressureValMm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bad_script"
-                android:text="@string/mm"
-                android:textSize="@dimen/textSize_settingsValue" />
-
-            <RadioButton
-                android:id="@+id/pressureValGPa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bad_script"
-                android:text="@string/gpa"
-                android:textSize="@dimen/textSize_settingsValue" />
-        </RadioGroup>
 
         <TextView
             android:layout_width="match_parent"
